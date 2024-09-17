@@ -1,54 +1,31 @@
-import React, { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_COUNTRIES } from "./queries";
+// Libraries (Librerias)
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Components (Componentes)
-import SearchBar from "./componets/SearchBar";
-import DetailsCountry from "./componets/DetailsCountry";
+// Views (Vistas)
+import Layout from "./views/Layout";
+import IndexPage from "./views/IndexPage";
+import FavoritesPage from "./views/FavoritesPage";
+import ActivitiesPage from "./views/ActivitiesPage";
+
 
 function AppPaises() {
-  // UseStates
-  const { loading, error, data } = useQuery(GET_COUNTRIES);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCountry, setSelectedCountry] = useState(null);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
-  // Filtrar los paises por SearchBar
-  const filteredCountries = data.countries.filter((country) =>
-    country.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  // Manejar la selección de un país
-  const handleCountryClick = (country) => {
-    setSelectedCountry(country);
-  };
-
-  // Cerrar los detalles
-  const handleCloseDetail = () => {
-    setSelectedCountry(null);
-  };
-
   return (
     <>
-      <h1>Lista de Países</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout/>}>
+            {/* 1.- Ruta principal */}
+            <Route path="/" element={<IndexPage />} index />
 
-      {/* Componente SearchBar */}
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            {/* 2.- Ruta favoritos */}
+            <Route path="/favorites" element={<FavoritesPage />} />
 
-      {/* Mostrar detalles del país si hay uno seleccionado */}
-      {selectedCountry ? (
-        <DetailsCountry country={selectedCountry} onClose={handleCloseDetail} />
-      ) : (
-        <ul>
-          {filteredCountries.map((country) => (
-            <li key={country.code} onClick={() => handleCountryClick(country)}>
-              {country.name} - {country.capital} {country.emoji}
-            </li>
-          ))}
-        </ul>
-      )}
+            {/* 3.- Ruta actividades */}
+            <Route path="/activities" element={<ActivitiesPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

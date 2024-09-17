@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import AppPaises from "./AppPaises.jsx";
 import "./index.css";
 
+
 // Apollo y GraphQL
 import ReactDOM from "react-dom/client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";

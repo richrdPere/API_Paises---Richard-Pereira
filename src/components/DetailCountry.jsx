@@ -1,8 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const DetailsCountry = ({ country, onClose }) => {
+const DetailCountry = ({ country, onClose }) => {
+  // Desctructuring country
+  const {
+    name,
+    emoji,
+    code,
+    capital,
+    languages,
+    native,
+    currency,
+    states,
+    subdivisions,
+    emojiU
+  } = country;
+
+  // URL imagen
   const [imageUrl, setImageUrl] = useState("");
+
+  // Ventana emergente
+  const [isWindowOpen, setIsWindowOpen] = useState(false);
 
   useEffect(() => {
     const fetchCountryImage = async () => {
@@ -10,7 +28,7 @@ const DetailsCountry = ({ country, onClose }) => {
         const response = await axios.get("https://pixabay.com/api/", {
           params: {
             key: "46022118-aaa4bb99857134f39789c28f5", // Reemplaza esto con tu API key de Pixabay
-            q: country.name, // Buscamos una imagen usando el nombre del país
+            q: name, // Buscamos una imagen usando el nombre del país
             image_type: "photo",
             per_page: 1,
           },
@@ -32,35 +50,36 @@ const DetailsCountry = ({ country, onClose }) => {
   return (
     <div className="detail-country">
       <button onClick={onClose}>Cerrar</button>
-      <h2>
-        {country.name} {country.emoji}
-      </h2>
-      <p>
-        <strong>Código:</strong> {country.code}
-      </p>
-      <p>
-        <strong>Capital:</strong> {country.capital}
-      </p>
-      <p>
-        <strong>Moneda:</strong> {country.currency}
-      </p>
-      <p>
-        <strong>Continente:</strong> {country.continent.name}
-      </p>
-      <p>
-        <strong>Lenguajes:</strong>{" "}
-        {country.languages.map((lang) => lang.name).join(", ")}
-      </p>
-
       {imageUrl && (
         <img
           src={imageUrl}
-          alt={country.name}
+          alt={name}
           style={{ width: "300px", borderRadius: "10px" }}
         />
       )}
+      <h2>
+        {name} {emoji}
+      </h2>
+      <p>
+        <strong>Capital:</strong> {capital}
+      </p>
+      <p>
+        <strong>Lenguajes:</strong>{" "}
+        {languages.map((lang) => lang.name).join(", ")}
+      </p>
+      <p>
+        <strong>Población:</strong> {native}
+      </p>
+
+      <p>
+        <strong>Moneda:</strong> {currency}
+      </p>
+      <p>
+        <strong>Region:</strong> {""}
+        {states.map((lang) => lang.name).join(", ")}
+      </p>
     </div>
   );
 };
 
-export default DetailsCountry;
+export default DetailCountry;
