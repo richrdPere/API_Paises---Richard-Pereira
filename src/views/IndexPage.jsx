@@ -98,10 +98,10 @@ const IndexPage = () => {
         {/* Sección de Cards */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 max-sm:grid-cols-1 max-md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {currentCountries.length === 0 ? (
+          {filteredCountries.length === 0 ? (
             <p>No se encontraron paises....</p>
           ) : (
-            currentCountries.map((country) => (
+            filteredCountries.map((country) => (
               <Countries
                 key={country.code}
                 country={country}
@@ -111,12 +111,13 @@ const IndexPage = () => {
           )}
 
           {/* Componente de paginación */}
-          <Pagination
+          {/* <Pagination
             countriesPerPage={countriesPerPage}
             totalCountries={filteredCountries.length}
             paginate={paginate}
             currentPage={currentPage}
-          />
+          /> */}
+          
         </div>
         {/* Seccion de la Ventana emergente */}
         {isWindowOpen && (

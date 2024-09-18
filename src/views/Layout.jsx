@@ -2,10 +2,11 @@
 import React from "react";
 
 // Components (Componentes)
-import Sidebar from "../components/Layout_Components/Sidebar";
+
 
 
 import { Outlet } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
 
 const Layout = () => {
   return (
