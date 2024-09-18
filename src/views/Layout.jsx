@@ -17,7 +17,7 @@ const Layout = () => {
       <div className="flex flex-col flex-1 overflow-y-auto">
         <div className="p-4">
           {/* Hijos como Components */}
-          <main className="container mx-12 py-8">
+          <main className="container mx-4 py-8">
             <Outlet />
           </main>
         </div>

@@ -15,12 +15,12 @@ const Filters = ({
   };
 
   return (
-    <div className="flex flex-auto justify-center border rounded-md w-full gap-10">
+    <div className="max-h-screen flex  border rounded-md  gap-10 sm:flex-row justify-center items-center md:grid-cols-2 max-sm:flex-col m-0">
       
       <select
         id="continent-select"
         value={selectedContinent}
-        className="w-50 h-10 border-2 border-sky-500 focus:outline-none focus:border-sky-500 text-sky-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider"
+        className="w-50 h-10 border-2 border-sky-500 focus:outline-none focus:border-sky-500 text-sky-500 rounded px-2 sm:w-[300px] md:px-3 py-0 md:py-1 tracking-wider"
         onChange={handleContinentChange}
       >
         <option value="">Todos los continentes</option>
@@ -37,7 +37,7 @@ const Filters = ({
       <select
         id="sort-order-select"
         value={sortOrder}
-        className="w-50 h-10 border-2 border-sky-500 focus:outline-none focus:border-sky-500 text-sky-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider"
+        className="w-50 h-10 border-2 border-sky-500 focus:outline-none focus:border-sky-500 text-sky-500 rounded px-2 sm:w-[300px] md:px-3 py-0 md:py-1 tracking-wider"
         onChange={handleSortOrderChange}
       >
         <option value="asc">Ascendente</option>

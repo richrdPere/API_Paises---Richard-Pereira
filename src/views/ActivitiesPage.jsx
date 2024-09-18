@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const ActivitiesPage = () => {
   return (
-    <div><h1>Esta en ActivityPage...</h1></div>
-  )
-}
+    <div>
+      <h1 className="text-2xl  font-bold">Esta en Activity Page...</h1>
+    </div>
+  );
+};
 
-export default ActivitiesPage
+export default ActivitiesPage;
