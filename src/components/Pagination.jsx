@@ -13,8 +13,8 @@ const Pagination = ({
   }
 
   return (
-    <nav className="flex justify-center mt-10 space-x-2">
-      <ul className="ring ring-primary bg-primary/20 px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">
+    <nav className="flexjustify-center mt-10 space-x-2">
+      <ul className="ring ring-primary bg-primary/20 flex flex-row px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">
         {pageNumbers.map((number) => (
           <li
             key={number}
